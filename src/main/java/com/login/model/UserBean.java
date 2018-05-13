@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+
 public class UserBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
