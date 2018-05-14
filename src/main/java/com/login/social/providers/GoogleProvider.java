@@ -7,7 +7,7 @@ import org.springframework.social.google.api.plus.Person;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.login.model.UserBean;
+import com.login.model.User;
 
 @Service
 public class GoogleProvider   {
@@ -19,7 +19,7 @@ public class GoogleProvider   {
     	BaseProvider socialLoginBean ;
 
 
-	public String getGoogleUserData(Model model, UserBean userForm) {
+	public String getGoogleUserData(Model model, User userForm) {
 
 		ConnectionRepository connectionRepository = socialLoginBean.getConnectionRepository();
 		if (connectionRepository.findPrimaryConnection(Google.class) == null) {
@@ -32,7 +32,7 @@ public class GoogleProvider   {
 	}
 
 	
-	protected void populateUserDetailsFromGoogle(UserBean userform) {
+	protected void populateUserDetailsFromGoogle(User userform) {
 		Google google = socialLoginBean.getGoogle();
 		Person googleUser = google.plusOperations().getGoogleProfile();
 		userform.setEmail(googleUser.getAccountEmail());

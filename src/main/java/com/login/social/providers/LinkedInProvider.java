@@ -7,7 +7,7 @@ import org.springframework.social.linkedin.api.LinkedInProfileFull;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.login.model.UserBean;
+import com.login.model.User;
 
 @Service
 public class LinkedInProvider  {
@@ -19,7 +19,7 @@ public class LinkedInProvider  {
   	@Autowired
     	BaseProvider socialLoginBean ;
 
-	public String getLinkedInUserData(Model model, UserBean userForm) {
+	public String getLinkedInUserData(Model model, User userForm) {
 
 		ConnectionRepository connectionRepository = socialLoginBean.getConnectionRepository();
 		if (connectionRepository.findPrimaryConnection(LinkedIn.class) == null) {
@@ -30,7 +30,7 @@ public class LinkedInProvider  {
 		return "user";
 	}
 	
-	private void populateUserDetailsFromLinkedIn(UserBean userForm) {
+	private void populateUserDetailsFromLinkedIn(User userForm) {
 		LinkedIn linkedIn = socialLoginBean.getLinkedIn();
 		LinkedInProfileFull linkedInUser = linkedIn.profileOperations().getUserProfileFull();
 		userForm.setEmail(linkedInUser.getEmailAddress());
