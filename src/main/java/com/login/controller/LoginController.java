@@ -44,4 +44,8 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping(value = { "/main" })
+	public String index() {
+		return "main";
+	}
 }
