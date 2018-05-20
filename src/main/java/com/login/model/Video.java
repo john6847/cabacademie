@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @Table(name = "video")
 public class Video implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String url;

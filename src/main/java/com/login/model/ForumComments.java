@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Data
 @Table(name = "forum_comment")
 public class ForumComments implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(optional = false)

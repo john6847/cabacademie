@@ -13,6 +13,7 @@ import java.util.Date;
 @Data
 @Table(name = "history_of_learning")
 public class HistoryOfLearning implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional = false)

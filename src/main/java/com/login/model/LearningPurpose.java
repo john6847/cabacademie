@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @Table(name = "learning_purpose")
 public class LearningPurpose implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;

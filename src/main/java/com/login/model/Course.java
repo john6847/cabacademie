@@ -15,6 +15,7 @@ import java.util.Locale;
 @Data
 @Table(name = "course")
 public class Course implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;

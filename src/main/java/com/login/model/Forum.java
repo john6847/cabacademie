@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @Table(name = "forum")
 public class Forum implements Serializable {
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(optional = false)
