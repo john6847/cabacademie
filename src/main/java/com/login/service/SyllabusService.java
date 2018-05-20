@@ -1,0 +1,38 @@
+package com.login.service;
+
+import com.login.model.Syllabus;
+import com.login.repository.SyllabusRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by Dany on 18/05/2018.
+ */
+@Service
+public class SyllabusService {
+    @Autowired
+    private SyllabusRepository syllabusRepository;
+
+    public List<Syllabus> fetchAllSyllabus(){
+        return syllabusRepository.findAll();
+    }
+
+    public Syllabus fetchSyllabus(Long id){
+        return syllabusRepository.findOne(id);
+    }
+
+    public Syllabus updateSyllabus(Syllabus syllabus){
+        Syllabus currentSyllabus= syllabusRepository.findOne(syllabus.getId());
+        currentSyllabus.setAbout(syllabus.getAbout());
+
+        return syllabusRepository.save(currentSyllabus);
+    }
+
+    public void deleteSyllabus(Long id){
+        syllabusRepository.delete(id);
+    }
+    //other delete methods
+    //other fetching methods
+}

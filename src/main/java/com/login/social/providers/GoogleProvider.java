@@ -1,5 +1,6 @@
 package com.login.social.providers;
 
+import com.login.model.LocalUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.google.api.Google;
@@ -7,7 +8,7 @@ import org.springframework.social.google.api.plus.Person;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.login.model.User;
+import com.login.model.LocalUser;
 
 @Service
 public class GoogleProvider   {
@@ -19,7 +20,7 @@ public class GoogleProvider   {
     	BaseProvider socialLoginBean ;
 
 
-	public String getGoogleUserData(Model model, User userForm) {
+	public String getGoogleUserData(Model model, LocalUser userForm) {
 
 		ConnectionRepository connectionRepository = socialLoginBean.getConnectionRepository();
 		if (connectionRepository.findPrimaryConnection(Google.class) == null) {
@@ -32,7 +33,7 @@ public class GoogleProvider   {
 	}
 
 	
-	protected void populateUserDetailsFromGoogle(User userform) {
+	protected void populateUserDetailsFromGoogle(LocalUser userform) {
 		Google google = socialLoginBean.getGoogle();
 		Person googleUser = google.plusOperations().getGoogleProfile();
 		userform.setEmail(googleUser.getAccountEmail());

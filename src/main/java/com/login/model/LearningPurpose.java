@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "learning_purpose")
-public class Learning_Purpose implements Serializable {
+public class LearningPurpose implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;

@@ -20,7 +20,7 @@ public class Course implements Serializable {
     private String title;
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
-    private User user;
+    private LocalUser localUser;
     private BigDecimal price;
     @OneToOne(optional = false)
     @JoinColumn(name = "syllabus_id")

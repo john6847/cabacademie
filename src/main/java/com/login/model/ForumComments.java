@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "forum_comment")
-public class Forum_Comments implements Serializable {
+public class ForumComments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(optional = false)
@@ -19,6 +19,6 @@ public class Forum_Comments implements Serializable {
     private String Text;
     @OneToOne(optional = false)
     @JoinColumn(name="user_id")
-    private User user;
+    private LocalUser localUser;
     private Long parent_commnent;
 }

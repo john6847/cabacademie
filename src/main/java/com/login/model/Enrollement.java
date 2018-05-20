@@ -21,7 +21,7 @@ public class Enrollement implements Serializable {
     private Course course;
     @ManyToOne(optional = false)
     @JoinColumn(name="user_id")
-    private User user;
+    private LocalUser localUser;
     private Date enrollementDate;
     private BigDecimal amount;
 }

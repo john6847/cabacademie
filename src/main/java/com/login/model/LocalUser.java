@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Email;
 @Entity
 @Data
 @Table(name = "user")
-public class User implements Serializable{
+public class LocalUser implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,5 +27,6 @@ public class User implements Serializable{
 	private String passwordConfirm;	
 	private String provider;
 	private String image;
+
 
 }

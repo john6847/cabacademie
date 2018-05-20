@@ -1,13 +1,12 @@
 package com.login.social.providers;
 
+import com.login.model.LocalUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.User;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-
-import com.login.model.UserBean;
 
 
 @Service
@@ -20,7 +19,7 @@ public class FacebookProvider  {
     	BaseProvider baseProvider ;
     	
 
-	public String getFacebookUserData(Model model, UserBean userForm) {
+	public String getFacebookUserData(Model model, LocalUser userForm) {
 
 		ConnectionRepository connectionRepository = baseProvider.getConnectionRepository();
 		if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
@@ -31,7 +30,7 @@ public class FacebookProvider  {
 		return "user";
 	}
 
-	protected void populateUserDetailsFromFacebook(UserBean userForm) {
+	protected void populateUserDetailsFromFacebook(LocalUser userForm) {
 		Facebook facebook = baseProvider.getFacebook();
 		User user = facebook.userOperations().getUserProfile();
 		userForm.setEmail(user.getEmail());
