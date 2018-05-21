@@ -31,6 +31,9 @@ public class CategoryService {
         return categoryRepository.save(currentCategory);
     }
 
+    public Category saveCategory (Category category){
+        return categoryRepository.save(category);
+    }
     public void deleteCategory(Long id){
         categoryRepository.delete(id);
     }

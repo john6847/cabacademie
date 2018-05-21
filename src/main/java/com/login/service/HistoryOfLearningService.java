@@ -29,8 +29,11 @@ public class HistoryOfLearningService {
         currentHistoryOfLearning.setTimeStamp(currentHistoryOfLearning.getTimeStamp());
         currentHistoryOfLearning.setVideo(historyOfLearning.getVideo());
 
-
         return historyOfLearningRepository.save(currentHistoryOfLearning);
+    }
+
+    public HistoryOfLearning saveHitoryOfLearnng (HistoryOfLearning historyOfLearning){
+        return historyOfLearningRepository.save(historyOfLearning);
     }
 
     public void deleteHistoryOfLearning(Long id){

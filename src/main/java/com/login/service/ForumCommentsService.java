@@ -16,8 +16,8 @@ public class ForumCommentsService {
     @Autowired
     private ForumCommentsRepository forumCommentsRepository;
 
-    public List<ForumComments> fetchAllForumComments(){
-        return forumCommentsRepository.findAll();
+    public List<ForumComments> fetchAllForumComments(Long forumId){
+        return forumCommentsRepository.findAllByForumId(forumId);
     }
 
     public ForumComments fetchForumComments(Long id){
@@ -32,7 +32,9 @@ public class ForumCommentsService {
         currentForumComments.setLocalUser(forumComments.getLocalUser());
         return forumCommentsRepository.save(currentForumComments);
     }
-
+    public ForumComments saveForumComments (ForumComments forumComments){
+        return forumCommentsRepository.save(forumComments);
+    }
     public void deleteForumComments(Long id){
         forumCommentsRepository.delete(id);
     }

@@ -15,8 +15,8 @@ public class LearningPurposeService {
     @Autowired
     private LearningPurposeRepository learningPurposeRepository;
 
-    public List<LearningPurpose> fetchAllLearningPurpose(){
-        return learningPurposeRepository.findAll();
+    public List<LearningPurpose> fetchAllLearningPurposeBySyllabusId(Long syllabusId){
+        return learningPurposeRepository.findAllBySyllabus_Id(syllabusId);
     }
 
     public LearningPurpose fetchLearningPurpose(Long id){
@@ -29,7 +29,9 @@ public class LearningPurposeService {
         currentLearningPurpose.setSyllabus(learningPurpose.getSyllabus());
         return learningPurposeRepository.save(currentLearningPurpose);
     }
-
+    public LearningPurpose saveLearningPurpose(LearningPurpose learningPurpose){
+        return learningPurposeRepository.save(learningPurpose);
+    }
     public void deleteLearningPurpose(Long id){
         learningPurposeRepository.delete(id);
     }

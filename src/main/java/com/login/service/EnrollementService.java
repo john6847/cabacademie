@@ -31,7 +31,9 @@ public class EnrollementService {
 
         return enrollementRepository.save(currentEnrollement);
     }
-
+    public Enrollement saveEnrollement(Enrollement enrollement){
+        return enrollementRepository.save(enrollement);
+    }
     public void deleteEnrollement(Long id){
         enrollementRepository.delete(id);
     }

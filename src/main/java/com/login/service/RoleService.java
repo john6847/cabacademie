@@ -29,7 +29,9 @@ public class RoleService {
 
         return roleRepository.save(currentRole);
     }
-
+    public Role saveRole(Role role){
+        return roleRepository.save(role);
+    }
     public void deleteRole(Long id){
         roleRepository.delete(id);
     }

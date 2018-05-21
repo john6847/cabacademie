@@ -30,6 +30,10 @@ public class ForumService {
 
         return forumRepository.save(currentForum);
     }
+    public Forum saveForum(Forum forum){
+        return forumRepository.save(forum);
+    }
+
 
     public void deleteForum(Long id){
         forumRepository.delete(id);

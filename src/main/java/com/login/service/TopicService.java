@@ -31,7 +31,9 @@ public class TopicService {
 
         return topicRepository.save(currentTopic);
     }
-
+    public Topic saveTopic(Topic topic){
+        return topicRepository.save(topic);
+    }
     public void deleteTopic(Long id){
         topicRepository.delete(id);
     }

@@ -31,7 +31,9 @@ public class UserTypeService {
 
         return userTypeRepository.save(currentUserType);
     }
-
+    public UserType saveUserType(UserType userType){
+        return userTypeRepository.save(userType);
+    }
     public void deleteUserType(Long id){
         userTypeRepository.delete(id);
     }

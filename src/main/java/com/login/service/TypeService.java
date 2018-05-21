@@ -28,7 +28,9 @@ public class TypeService {
         currentType.setType(type.getType());
         return typeRepository.save(currentType);
     }
-
+    public Type saveType(Type type){
+        return typeRepository.save(type);
+    }
     public void deleteType(Long id){
         typeRepository.delete(id);
     }

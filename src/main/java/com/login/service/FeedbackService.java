@@ -15,7 +15,10 @@ public class FeedbackService {
     @Autowired
     private FeedbackRepository feedbackRepository;
 
-    public List<Feedback> fetchAllFeedback(){
+    public List<Feedback> fetchAllFeedbackByEnrollementId(Long enrollementId){
+        return feedbackRepository.findAllByEnrollement_Id(enrollementId);
+    }
+    public List<Feedback> fetchAllFeedbackByCourseId(Long courseId){
         return feedbackRepository.findAll();
     }
 
@@ -31,6 +34,9 @@ public class FeedbackService {
         currentFeedback.setRating(feedback.getRating());
 
         return feedbackRepository.save(currentFeedback);
+    }
+    public Feedback saveFeedback(Feedback feedback){
+        return feedbackRepository.save(feedback);
     }
 
     public void deleteFeedback(Long id){

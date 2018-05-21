@@ -35,7 +35,9 @@ public class CourseService {
         currentCourse.setLocalUser(course.getLocalUser());
         return courseRepository.save(currentCourse);
     }
-
+    public Course saveCourse (Course course){
+        return courseRepository.save(course);
+    }
     public void deleteCourse(Long id){
         courseRepository.delete(id);
     }

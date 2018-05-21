@@ -1,5 +1,6 @@
 package com.login.service;
 
+import com.login.model.LearningPurpose;
 import com.login.model.Requirements;
 import com.login.repository.RequirementsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class RequirementsService {
     @Autowired
     private RequirementsRepository requirementsRepository;
 
-    public List<Requirements> fetchAllRequirements(){
-        return requirementsRepository.findAll();
+    public List<Requirements> fetchAllRequirementsBySyllabus(Long syllabusId){
+        return requirementsRepository.findAllBySyllabus_Id(syllabusId);
     }
 
     public Requirements fetchRequirements(Long id){
@@ -29,7 +30,9 @@ public class RequirementsService {
 
         return requirementsRepository.save(currentRequirements);
     }
-
+    public Requirements saveRequirements(Requirements requirements){
+        return requirementsRepository.save(requirements);
+    }
     public void deleteRequirements(Long id){
         requirementsRepository.delete(id);
     }

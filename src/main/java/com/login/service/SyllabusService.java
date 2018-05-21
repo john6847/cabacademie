@@ -29,7 +29,9 @@ public class SyllabusService {
 
         return syllabusRepository.save(currentSyllabus);
     }
-
+    public Syllabus saveSyllabus(Syllabus syllabus){
+        return syllabusRepository.save(syllabus);
+    }
     public void deleteSyllabus(Long id){
         syllabusRepository.delete(id);
     }

@@ -38,7 +38,9 @@ public class UserService {
 
         return userRepository.save(currentLocalUser);
     }
-
+    public LocalUser saveLocalUser(LocalUser user){
+        return userRepository.save(user);
+    }
     public void deleteUser(Long id){
         userRepository.delete(id);
     }
