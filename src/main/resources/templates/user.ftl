@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"/>
 </head>
 <body>
 	<div class="container">
