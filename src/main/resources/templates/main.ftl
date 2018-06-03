@@ -48,11 +48,6 @@
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -97,16 +92,7 @@
                             <li><a href="about.html">A propos</a></li>
                             <li><a href="pricing.html">Prix</a></li>
                             <!--
-<li class="has-dropdown">
-<a href="blog.html">Blog</a>
-<ul class="dropdown">
-    <li><a href="#">Web Design</a></li>
-    <li><a href="#">eCommerce</a></li>
-    <li><a href="#">Branding</a></li>
-    <li><a href="#">API</a></li>
-</ul>
-</li>
--->
+
                             <li><a href="/contact.html">Contactez-nous</a></li>
                             <li class="btn-cta"><a href="/login.ftl"><span>Conexion</span></a></li>
                             <li class="btn-cta"><a href="#"><span>Creer un cours</span></a></li>
