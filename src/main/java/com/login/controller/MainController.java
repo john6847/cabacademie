@@ -47,6 +47,6 @@ public class MainController {
 
 	@RequestMapping(value = { "/" })
 	public String index() {
-		return "main";
+		return "index";
 	}
 }
