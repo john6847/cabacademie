@@ -13,7 +13,7 @@ import com.login.social.providers.GoogleProvider;
 import com.login.social.providers.LinkedInProvider;
 
 @Controller
-public class LoginController {
+public class MainController {
 
 	@Autowired 
 	FacebookProvider facebookProvider;
@@ -34,17 +34,18 @@ public class LoginController {
 		return googleProvider.getGoogleUserData(model, new LocalUser());
 	}
 
-	@RequestMapping(value = "/linkedin", method = RequestMethod.GET)
-	public String helloFacebook(Model model) {
-		return linkedInProvider.getLinkedInUserData(model, new LocalUser());
-	}
-	
-	@RequestMapping(value = { "/","/login" })
+	@RequestMapping(value = { "/login" })
 	public String login() {
 		return "login";
 	}
 
-	@RequestMapping(value = { "/main" })
+
+	@RequestMapping(value = "/linkedin", method = RequestMethod.GET)
+	public String helloFacebook(Model model) {
+		return linkedInProvider.getLinkedInUserData(model, new LocalUser());
+	}
+
+	@RequestMapping(value = { "/" })
 	public String index() {
 		return "main";
 	}
