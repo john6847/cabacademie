@@ -94,7 +94,7 @@
                             <!--
 
                             <li><a href="/contact.html">Contactez-nous</a></li>
-                            <li class="btn-cta"><a href="/login.ftl"><span>Conexion</span></a></li>
+                            <li class="btn-cta"><a hrelogin.html.ftl"><span>Conexion</span></a></li>
                             <li class="btn-cta"><a href="#"><span>Creer un cours</span></a></li>
                         </ul>
                     </div>

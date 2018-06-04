@@ -40,7 +40,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         {
             name:'login',
             url:'/login',
-            templateUrl:'login.ftl',
+            templateUrl:'partials/login.html',
             controller:'LoginController as lctrl'
         }
     ]
@@ -49,7 +49,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         {
             name:'home',
             url:'/home',
-            templateUrl:'home.ftl',
+            templateUrl:'partials/home.html',
             controller:'HomeController as hctrl'
         }
     ]
@@ -60,3 +60,18 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     // $stateProvider.state(courseStates[2]);
 
 }])
+
+
+
+app.run(['$rootScope', '$state', '$stateParams',
+        function ($rootScope,   $state,   $stateParams) {
+
+            // It's very handy to add references to $state and $stateParams to the $rootScope
+            // so that you can access them from any scope within your applications.For example,
+            // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+            // to active whenever 'contacts.list' or one of its decendents is active.
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+        }
+    ]
+)
