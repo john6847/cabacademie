@@ -1,67 +1,66 @@
 'use strict'
-var app = angular.module('cabAcademie', ['ui.router'])
+var app = angular.module('cabAcademie', ['ui.router', 'ngMaterial','ngMessages']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    // var courseStates =[
-    //     {
-    //         name:'course',
-    //         url:'/course',
-    //         templateUrl:'course',
-    //         controller:'CourseController as cctrl',
-    //         resolve:{
-    //             async:['CourseService', function(CourseService){
-    //                 return CourseService.fetchAllCourses();
-    //             }]
-    //         }
-    //     },{
-    //         name:'course.list',
-    //         url:'/{courseId:[A-Za-z]{0,9}}',
-    //         templateUrl: function(params){return 'course/'+params.courseId;},
-    //         controller:'CourseController as cctrl',
-    //         resolve:{
-    //             async:['CourseService', '$stateParams', function(CourseService, $stateParams ){
-    //                 return CourseService.fetchAllItems($stateParams.courseId);
-    //             }]
-    //         }
-    //     },{
-    //         name:'course.list.detail',
-    //         url:'/{itemId:[0-9]{1,9}}',
-    //         templateUrl: function(params){return 'course/'+params.courseId+'/'+params.itemId;},
-    //         controller:'CourseController as cctrl',
-    //         resolve:{
-    //             async:['CourseService', '$stateParams', function(CourseService, $stateParams ){
-    //                 return CourseService.fetchSpecificItem($stateParams.courseId,$stateParams.itemId);
-    //             }]
-    //         }
-    //     }
-    // ];
+    $urlRouterProvider.otherwise("/home");
 
-    var loginState =[
+    var loginState =
         {
             name:'login',
             url:'/login',
-            templateUrl:'partials/login.html',
-            controller:'LoginController as lctrl'
-        }
-    ]
+            templateUrl:'partials/login.ftl',
+            controller:'LoginController'
+        };
 
-    var homeState =[
+    var homeState =
         {
             name:'home',
             url:'/home',
-            templateUrl:'partials/home.html',
-            controller:'HomeController as hctrl'
+            templateUrl:'partials/home.ftl',
+            controller:'HomeController'
+        };
+    var courseStates =[
+        {
+            name:'course',
+            url:'/course',
+            templateUrl:'partials/course.ftl',
+            controller:'CourseController'
+        },
+        {
+            name:'registercourse',
+            url:'/registercourse',
+            templateUrl:'partials/register_course.ftl',
+            controller:'CourseController'
         }
-    ]
+        ]; //,{
+        //     name:'course.list',
+        //     url:'/{courseId:[A-Za-z]{0,9}}',
+        //     templateUrl: function(params){return 'course/'+params.courseId;},
+        //     controller:'CourseController as cctrl',
+        //     resolve:{
+        //         async:['CourseService', '$stateParams', function(CourseService, $stateParams ){
+        //             return CourseService.fetchAllItem($stateParams.courseId);
+        //         }]
+        //     }
+        // },{
+        //     name:'course.list.detail',
+        //     url:'/{itemId:[0-9]{1,9}}',
+        //     templateUrl: function(params){return 'course/'+params.courseId+'/'+params.itemId;},
+        //     controller:'CourseController as cctrl',
+        //     resolve:{
+        //         async:['CourseService', '$stateParams', function(CourseService, $stateParams ){
+        //             return CourseService.fetchSpecificItem($stateParams.courseId,$stateParams.itemId);
+        //         }]
+        //     }
+        // }
 
-     $stateProvider.state(homeState);
-     $stateProvider.state(loginState);
-    // $stateProvider.state(courseStates[1]);
+    $stateProvider.state(courseStates[0]);
+    $stateProvider.state(courseStates[1]);
+    $stateProvider.state(homeState);
+    $stateProvider.state(loginState);
     // $stateProvider.state(courseStates[2]);
 
-}])
-
-
+}]);
 
 app.run(['$rootScope', '$state', '$stateParams',
         function ($rootScope,   $state,   $stateParams) {
@@ -74,4 +73,17 @@ app.run(['$rootScope', '$state', '$stateParams',
             $rootScope.$stateParams = $stateParams;
         }
     ]
-)
+);
+
+
+// md-card configuration
+app.controller('AppCtrl', function($scope) {
+    $scope.imagePath = 'img/washedout.png';
+});
+app.config(['$mdThemingProvider', function($mdThemingProvider) {
+    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+}]);
+

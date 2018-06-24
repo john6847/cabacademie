@@ -1,26 +1,24 @@
 'use strict';
 
-app.controller('LoginController',function ($location, $scope, $rootScope, $http) {
-    $http.get('/api/login/user').success(function (data) {
-        $scope.greeting = data;
-
+app.controller('LoginController',function ($location, $scope, $q, $rootScope, $http) {
         var authenticate = function (credentials, callback) {
 
             var headers = credentials ? {
                 authorization: "Basic "
                 + btoa(credentials.username + ":" + credentials.password)
             } : {};
-
-            $http.get('user', {headers: headers}).success(function (data) {
-                if (data.name) {
-                    $rootScope.authenticated = true;
-                } else {
+            $http.get('/api/login/user', {headers: headers})
+                .then(function (data) {
+                    if (data.name) {
+                        $rootScope.authenticated = true;
+                    } else {
+                        $rootScope.authenticated = false;
+                    }
+                    callback && callback();
+                }, function (error) {
                     $rootScope.authenticated = false;
-                }
-                callback && callback();
-            }).error(function () {
-                $rootScope.authenticated = false;
-                callback && callback()
+                    console.log(error);
+                    callback && callback()
             });
         };
 
@@ -40,12 +38,13 @@ app.controller('LoginController',function ($location, $scope, $rootScope, $http)
 
 
         $scope.logout = function() {
-            $http.post('logout', {}).success(function() {
-                $rootScope.authenticated = false;
-                $location.path("/");
-            }).error(function(data) {
-                $rootScope.authenticated = false;
-            });
+            $http.post('logout', {})
+                .then(function() {
+                    $rootScope.authenticated = false;
+                    $location.path("/");
+                },function(error) {
+                    console.log(error);
+                    $rootScope.authenticated = false;
+                });
         }
-    })
-});
+ });

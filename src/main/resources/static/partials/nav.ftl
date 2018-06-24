@@ -19,12 +19,21 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="index.html"><i class="icon-study"></i>Educ<span>.</span></a></div>
+						<div id="fh5co-logo"><a ui-sref="home" ><i class="icon-study"></i>CabAcademie</a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li class="active"><a ui-sref="home">Home</a></li>
-							<li><a href="courses.html">Courses</a></li>
+							<li><a ui-sref="home" >Accueil</a></li>
+                            <li class="has-dropdown">
+                                <a ui-sref="course">Cours</a>
+                                <ul class="dropdown">
+									<li><a ui-sref="registercourse" class="btn btn-primary btn-sm">Ajouter Nouveau Cours</a></li>
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">eCommerce</a></li>
+                                    <li><a href="#">Branding</a></li>
+                                    <li><a href="#">API</a></li>
+                                </ul>
+                            </li>
 							<li><a href="teacher.html">Teacher</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="pricing.html">Pricing</a></li>
