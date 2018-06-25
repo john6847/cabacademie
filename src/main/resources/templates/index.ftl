@@ -63,13 +63,13 @@
         <![endif]-->
 
         <script src="js/angular.js"></script>
-        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-route.js"></script>
         <script src="js/angular-ui-router.js"></script>
         <script src="js/angular/app.js"></script>
         <!-- Angular Material Library -->
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-        <script src="js/angular-aria.min.js"></script>
-        <script src="js/angular-messages.min.js"></script>
+        <script src="js/angular-aria.js"></script>
+        <script src="js/angular-messages.js"></script>
     </head>
     <!-- header goes here -->
     <!--<div ng-include="'particourse.ftlhtml'"></div>-->
@@ -91,7 +91,7 @@
     <script src="js/angular/controllers/LoginController.js"></script>
     <script src="js/angular/controllers/HomeController.js"></script>
     <script src="js/angular/controllers/CourseController.js"></script>
-    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-animate.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <!-- jQuery Easing -->

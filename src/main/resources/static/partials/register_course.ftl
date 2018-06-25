@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-md-6 col-x-12">
                                 <label class="control-label" for="price">Prix</label>
-                                <input type="number" id="price" min="0" pattern="[0-9]" ng-mdodel="price.value" name="price"  step="0.01" title="Le prix du cours" class="form-control" required>
+                                <input type="number" id="price" pattern="[0-9]" ng-mdodel="price.value" name="price"  step="0.01" title="Le prix du cours" class="form-control" required>
                                 <span style="color: red;" ng-if="courseForm.price.$invalid && (courseForm.price.$dirty ||  courseForm.price.$touched)">Prix Invalide!! </span>
                                 <span style="color: red;" ng-if="courseForm.price.$error.required && (courseForm.price.$dirty ||  courseForm.price.$touched) ">Prix obligatoire!!  </span>
                             </div>
