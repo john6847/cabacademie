@@ -45,7 +45,6 @@ public class MainController {
 	public String homePage() {
 		return "partials/home";
 	}
-
 	@RequestMapping(value = { "/course" }, method = RequestMethod.GET)
 	public String course() {
 		return "partials/course";
