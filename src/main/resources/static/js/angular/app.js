@@ -6,19 +6,19 @@ app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/login',{
             templateUrl:'login',
-            controller:"LoginController"
+            controller:"LoginController as l_ctrl"
         })
         .when('/home',{
-            templateUrl:'home',
-            controller:"HomeController"
+            templateUrl:'/home',
+            controller:"HomeController as h_ctrl"
         })
         .when('/course',{
             templateUrl:'course',
-            controller:"CourseController"
+            controller:"CourseController as c_ctrl"
         })
         .when('/registerCourse',{
             templateUrl:'registerCourse',
-            controller:"CourseController"
+            controller:"CourseController as rc_ctrl"
         })
         .otherwise({redirectTo:'/home'})
 

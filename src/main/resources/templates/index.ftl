@@ -75,12 +75,131 @@
     <!--<div ng-include="'particourse.ftlhtml'"></div>-->
     <body ng-cloak class="ng-cloak">
     <div id="page">
-            <div ng-include src="'partials/nav.ftl'"></div>
+        <nav class="fh5co-nav" role="navigation">
+            <div class="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <p class="site">www.yourdomainname.com</p>
+                            <p class="num">Call: +01 123 456 7890</p>
+                            <ul class="fh5co-social">
+                                <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                                <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                                <li><a href="#"><i class="icon-dribbble2"></i></a></li>
+                                <li><a href="#"><i class="icon-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div id="fh5co-logo"><a href="#/home" ><i class="icon-study"></i>CabAcademie</a></div>
+                        </div>
+                        <div class="col-xs-10 text-right menu-1">
+                            <ul>
+                                <li><a href="#/home" >Accueil</a></li>
+                                <li class="has-dropdown">
+                                    <a href="#/course">Cours</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#/registerCourse" class="btn btn-primary btn-sm">Ajouter</a></li>
+                                        <li><a href="#">Web Design</a></li>
+                                        <li><a href="#">eCommerce</a></li>
+                                        <li><a href="#">Branding</a></li>
+                                        <li><a href="#">API</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="teacher.html">Teacher</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li class="has-dropdown">
+                                    <a href="blog.html">Blog</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Web Design</a></li>
+                                        <li><a href="#">eCommerce</a></li>
+                                        <li><a href="#">Branding</a></li>
+                                        <li><a href="#">API</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li class="btn-cta"><a ui-sref="login"><span>Conexion</span></a></li>
+                                <li class="btn-cta"><a href="#/createCourse"><span>Create a Course</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
             <!-- aside goes here  -->
         <#--<div ng-include src="'partials/aside.ftl'"></div>-->
-            <div ui-view    ></div>
-            <!-- footer goes here -->
-            <div ng-include src="'partials/footer.ftl'"></div>
+            <div ng-view></div>
+   <!-- footer goes here -->
+        <footer id="fh5co-footer" role="contentinfo" style="background-image: url(images/img_bg_4.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row row-pb-md">
+                    <div class="col-md-3 fh5co-widget">
+                        <h3>About Education</h3>
+                        <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                        <h3>Learning</h3>
+                        <ul class="fh5co-footer-links">
+                            <li><a href="#">Course</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Meetups</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                        <h3>Learn &amp; Grow</h3>
+                        <ul class="fh5co-footer-links">
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Handbook</a></li>
+                            <li><a href="#">Held Desk</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                        <h3>Engage us</h3>
+                        <ul class="fh5co-footer-links">
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Visual Assistant</a></li>
+                            <li><a href="#">System Analysis</a></li>
+                            <li><a href="#">Advertise</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                        <h3>Legal</h3>
+                        <ul class="fh5co-footer-links">
+                            <li><a href="#">Find Designers</a></li>
+                            <li><a href="#">Find Developers</a></li>
+                            <li><a href="#">Teams</a></li>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="#">API</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+                            <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> &amp; <a href="https://www.pexels.com/" target="_blank">Pexels</a></small>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
         </div>
         <!-- scripts goes here -->
         <div class="gototop js-top">

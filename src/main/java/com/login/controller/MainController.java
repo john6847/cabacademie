@@ -38,8 +38,26 @@ public class MainController {
 //	}
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String homePage() {
-		System.out.println("Looking in the index controller.........");
+	public String index() {
 		return "index";
 	}
+@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public String homePage() {
+		return "partials/home";
+	}
+
+	@RequestMapping(value = { "/course" }, method = RequestMethod.GET)
+	public String course() {
+		return "partials/course";
+	}
+	@RequestMapping(value = { "/registerCourse" }, method = RequestMethod.GET)
+	public String registerCourse() {
+		return "partials/register_course";
+	}
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login() {
+		return "partials/login";
+	}
+
+
 }
