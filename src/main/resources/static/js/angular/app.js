@@ -1,38 +1,57 @@
 'use strict'
-var app = angular.module('cabAcademie', ['ui.router', 'ngMaterial','ngMessages']);
+var app = angular.module('cabAcademie', ['ngRoute', 'ngMaterial','ngMessages']);
 
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise("/home");
+app.config(['$routeProvider', function($routeProvider){
 
-    var loginState =
-        {
-            name:'login',
-            url:'/login',
-            templateUrl:'partials/login.ftl',
-            controller:'LoginController'
-        };
+    $routeProvider
+        .when('/login',{
+            templateUrl:'login',
+            controller:"LoginController"
+        })
+        .when('/home',{
+            templateUrl:'home',
+            controller:"HomeController"
+        })
+        .when('/course',{
+            templateUrl:'course',
+            controller:"CourseController"
+        })
+        .when('/registerCourse',{
+            templateUrl:'registerCourse',
+            controller:"CourseController"
+        })
+        .otherwise({redirectTo:'/home'})
 
-    var homeState =
-        {
-            name:'home',
-            url:'/home',
-            templateUrl:'partials/home.ftl',
-            controller:'HomeController'
-        };
-    var courseStates =[
-        {
-            name:'course',
-            url:'/course',
-            templateUrl:'partials/course.ftl',
-            controller:'CourseController'
-        },
-        {
-            name:'registercourse',
-            url:'/registercourse',
-            templateUrl:'partials/register_course.ftl',
-            controller:'CourseController'
-        }
-        ]; //,{
+    // var loginState =
+    //     {
+    //         name:'login',
+    //         url:'/login',
+    //         templateUrl:'partials/login.ftl',
+    //         controller:'LoginController'
+    //     };
+    //
+    // var homeState =
+    //     {
+    //         name:'home',
+    //         url:'/home',
+    //         templateUrl:'partials/home.ftl',
+    //         controller:'HomeController'
+    //     };
+    // var courseStates =[
+    //     {
+    //         name:'course',
+    //         url:'/course',
+    //         templateUrl:'partials/course.ftl',
+    //         controller:'CourseController'
+    //     },
+    //     {
+    //         name:'registercourse',
+    //         url:'/registercourse',
+    //         templateUrl:'partials/register_course.ftl',
+    //         controller:'CourseController'
+    //     }
+    //     ];
+        //,{
         //     name:'course.list',
         //     url:'/{courseId:[A-Za-z]{0,9}}',
         //     templateUrl: function(params){return 'course/'+params.courseId;},
@@ -54,26 +73,26 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         //     }
         // }
 
-    $stateProvider.state(courseStates[0]);
-    $stateProvider.state(courseStates[1]);
-    $stateProvider.state(homeState);
-    $stateProvider.state(loginState);
+    // $stateProvider.state(courseStates[0]);
+    // $stateProvider.state(courseStates[1]);
+    // $stateProvider.state(homeState);
+    // $stateProvider.state(loginState);
     // $stateProvider.state(courseStates[2]);
 
 }]);
 
-app.run(['$rootScope', '$state', '$stateParams',
-        function ($rootScope,   $state,   $stateParams) {
-
-            // It's very handy to add references to $state and $stateParams to the $rootScope
-            // so that you can access them from any scope within your applications.For example,
-            // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
-            // to active whenever 'contacts.list' or one of its decendents is active.
-            $rootScope.$state = $state;
-            $rootScope.$stateParams = $stateParams;
-        }
-    ]
-);
+// app.run(['$rootScope', '$state', '$stateParams',
+//         function ($rootScope,   $state,   $stateParams) {
+//
+//             // It's very handy to add references to $state and $stateParams to the $rootScope
+//             // so that you can access them from any scope within your applications.For example,
+//             // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+//             // to active whenever 'contacts.list' or one of its decendents is active.
+//             $rootScope.$state = $state;
+//             $rootScope.$stateParams = $stateParams;
+//         }
+//     ]
+// );
 
 
 // md-card configuration

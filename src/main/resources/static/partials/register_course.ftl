@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-md-6 col-x-12">
                                 <label class="control-label" for="price">Prix</label>
-                                <input type="number" id="price" pattern="[0-9]" ng-mdodel="price.value" name="price"  step="0.01" title="Le prix du cours" class="form-control" required>
+                                <input type="number" id="price"  ng-mdodel="price.value" name="price"  step="0.01" title="Le prix du cours" class="form-control" required>
                                 <span style="color: red;" ng-if="courseForm.price.$invalid && (courseForm.price.$dirty ||  courseForm.price.$touched)">Prix Invalide!! </span>
                                 <span style="color: red;" ng-if="courseForm.price.$error.required && (courseForm.price.$dirty ||  courseForm.price.$touched) ">Prix obligatoire!!  </span>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="row form-group">
                             <div class="col-md-6 col-xs-12">
                                 <label class="control-label" for="price">Duration</label>
-                                <input type="number" id="duration" name="duration"  min="0" ng-mdodel="duration.value" name="duration" title="Le durée du cours" class="form-control" required>
+                                <input type="number" id="duration" name="duration"   ng-mdodel="duration.value" name="duration" title="Le durée du cours" class="form-control" required>
                                 <span style="color: red;" ng-if="courseForm.duration.$invalid && (courseForm.duration.$dirty ||  courseForm.duration.$touched)">Prix Invalide!</span>
                                 <span style="color: red;" ng-if="courseForm.duration.$error.required && (courseForm.duration.$dirty ||  courseForm.duration.$touched) ">Prix obligatoire!</span>
                             </div>

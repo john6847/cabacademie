@@ -24,6 +24,7 @@ app.controller('CourseController', ['CourseService','$scope',  function(CourseSe
                     console.error(errorResponse);
                 })
     }
+
     $scope.register = function() {
         //$scope.course.price= $scope.duration.value
        // $scope.course.price=$scope.price.value
