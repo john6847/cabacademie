@@ -1,6 +1,8 @@
 app.controller('CourseController', ['CourseService','$scope', function(CourseService, $scope) {
     var self = this;
 
+
+
     // $scope.price = {
     //     value:2
     // };
@@ -14,7 +16,7 @@ app.controller('CourseController', ['CourseService','$scope', function(CourseSer
     // });
 
     self.courses=[];
-    self.course={ id:0, price: 0, duration: 0, title: '', syllabus:{}, startDate: null, category:{}, premium: false, localUser:{}};
+    self.course={ id:0, price: '', duration: '', title: '', syllabus:{}, startDate: null, category:{}, premium: false, localUser:{}};
     self.message ='';
 
 
@@ -42,5 +44,47 @@ app.controller('CourseController', ['CourseService','$scope', function(CourseSer
         console.log(self.course.price)
     }
 }]);
+
+app.directive('numbersOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModelCtrl) {
+            function fromUser(text) {
+                if (text) {
+                    var transformedInput = text.replace(/[^0-9]/g, '');
+
+                    if (transformedInput !== text) {
+                        ngModelCtrl.$setViewValue(transformedInput);
+                        ngModelCtrl.$render();
+                    }
+                    return transformedInput;
+                }
+                return undefined;
+            }
+            ngModelCtrl.$parsers.push(fromUser);
+        }
+    };
+});
+
+app.directive('onlyNumbers', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModelCtrl) {
+            function fromUser(text) {
+                if (text) {
+                    var transformedInput = text.replace(/[^0-9]/g, '');
+
+                    if (transformedInput !== text) {
+                        ngModelCtrl.$setViewValue(transformedInput);
+                        ngModelCtrl.$render();
+                    }
+                    return transformedInput;
+                }
+                return undefined;
+            }
+            ngModelCtrl.$parsers.push(fromUser);
+        }
+    };
+});
 
 'use strict';

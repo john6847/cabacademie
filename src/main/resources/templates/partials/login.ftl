@@ -29,12 +29,13 @@
 
                         <div class="signUpForm">
                             <div class="head">
-                                <img src="/images/course_1.jpg" alt="Subscribe"/>
+                                <img src="/images/course_1.jpg" alt="Subscribe" style="max-width: 300px; margin: 3%"/>
                             </div>
                             <div class="alert alert-danger" ng-show="error">
                                 There was a problem logging in. Please try again.
                             </div>
-                            <form role="form" ng-submit="login()" class="flp">
+
+                            <form role="form" ng-submit="login()" >
 
                                 <div class="input-group has-feedback">
                                     <label class="sr-only" for="exUserName">Email ou Nom d'utilisateur</label>
