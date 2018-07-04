@@ -58,6 +58,10 @@ public class MainController {
 	public String login() {
 		return "partials/login";
 	}
+@RequestMapping(value = { "/category" }, method = RequestMethod.GET)
+	public String category() {
+		return "partials/category";
+	}
 
 
 }

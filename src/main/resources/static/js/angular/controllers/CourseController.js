@@ -24,7 +24,7 @@ app.controller('CourseController', ['CourseService','$scope', function(CourseSer
         CourseService.fetchAllCourses()
             .then(
                 function (d) {
-                    $scope.courses = d;
+                    self.courses = d;
                     console.log(self.courses);
                 },
                 function (errorResponse) {

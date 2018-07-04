@@ -1,8 +1,11 @@
 package com.login.controller;
 
 import com.login.model.Category;
+import com.login.model.Topic;
 import com.login.service.CategoryService;
+import com.login.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,9 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private TopicService topicService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable Long id){
@@ -38,6 +44,15 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
+
+    @PostMapping(value = "/topic")
+    public ResponseEntity<List<Topic>> saveTopic(@Valid @RequestBody List<Topic> topics){
+        if(!topicService.saveTopics(topics))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 
     @PostMapping()
     public  ResponseEntity<Category> saveCategory(@Valid @RequestBody Category category){

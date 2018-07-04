@@ -20,6 +20,10 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl:'registerCourse',
             controller:"CourseController as rc_ctrl"
         })
+        .when('/category/add',{
+            templateUrl:'category',
+            controller:"CategoryController as cat_ctrl"
+        })
         .otherwise({redirectTo:'/home'})
 
     // var loginState =

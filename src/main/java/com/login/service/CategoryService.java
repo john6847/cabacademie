@@ -28,6 +28,7 @@ public class CategoryService {
         Category currentCategory= categoryRepository.findOne(category.getId());
         currentCategory.setDescription(category.getDescription());
         currentCategory.setName(category.getName());
+        currentCategory.setParentCategory(category.getParentCategory());
         return categoryRepository.save(currentCategory);
     }
 

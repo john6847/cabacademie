@@ -66,8 +66,8 @@
                             <div class="col-md-6 col-xs-12">
                                 <label class="control-label" for="startDate">Début du cours</label>
                                 <input type="date" submit-required="true"  data-date-format="dd/MMMM/yyyy" class="form-control"  id="startDate" ng-model="course.startDate" placeholder="Debut du Cours" title="Choisit la dâte du debut" required>
-                                <span style="color: red;" ng-show="myForm.startDate.$error.required && (courseForm.startDate.$dirty ||  courseForm.startDate.$touched)">Début du cours requis</span>
-                                <span style="color: red;" ng-show="myForm.startDate.$invalid && (courseForm.startDate.$dirty ||  courseForm.startDate.$touched)">Date Invalide</span>
+                                <span style="color: red;" ng-show="courseForm.startDate.$error.required && (courseForm.startDate.$dirty ||  courseForm.startDate.$touched)">Début du cours requis</span>
+                                <span style="color: red;" ng-show="courseForm.startDate.$invalid && (courseForm.startDate.$dirty ||  courseForm.startDate.$touched)">Date Invalide</span>
                             </div>
                         </div>
 

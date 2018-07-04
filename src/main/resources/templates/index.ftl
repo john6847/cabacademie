@@ -104,7 +104,17 @@
                                 <li class="has-dropdown">
                                     <a href="#/course">Cours</a>
                                     <ul class="dropdown">
-                                        <li><a href="#/registerCourse" class="btn btn-primary btn-sm">Ajouter</a></li>
+                                        <li><a href="#/registercourse" class="btn btn-primary btn-sm">Ajouter</a></li>
+                                        <li><a href="#">Web Design</a></li>
+                                        <li><a href="#">eCommerce</a></li>
+                                        <li><a href="#">Branding</a></li>
+                                        <li><a href="#">API</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="blog.html">Categories</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#/category/add" class="btn btn-primary btn-sm">Ajouter</a></li>
                                         <li><a href="#">Web Design</a></li>
                                         <li><a href="#">eCommerce</a></li>
                                         <li><a href="#">Branding</a></li>
@@ -207,9 +217,11 @@
     </div>
 
     <script src="js/angular/services/CourseService.js"></script>
+    <script src="js/angular/services/CategoryService.js"></script>
     <script src="js/angular/controllers/LoginController.js"></script>
     <script src="js/angular/controllers/HomeController.js"></script>
     <script src="js/angular/controllers/CourseController.js"></script>
+    <script src="js/angular/controllers/CategoryController.js"></script>
     <script src="js/angular-animate.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
