@@ -104,7 +104,7 @@
                                 <li class="has-dropdown">
                                     <a href="#/course">Cours</a>
                                     <ul class="dropdown">
-                                        <li><a href="#/registercourse" class="btn btn-primary btn-sm">Ajouter</a></li>
+                                        <li><a href="#/registerCourse" class="btn btn-primary btn-sm">Ajouter</a></li>
                                         <li><a href="#">Web Design</a></li>
                                         <li><a href="#">eCommerce</a></li>
                                         <li><a href="#">Branding</a></li>

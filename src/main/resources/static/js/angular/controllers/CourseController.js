@@ -1,24 +1,25 @@
-app.controller('CourseController', ['CourseService','$scope', function(CourseService, $scope) {
+app.controller('CourseController', ['CourseService','CategoryService','$scope', function(CourseService,CategoryService, $scope) {
     var self = this;
 
-
-
-    // $scope.price = {
-    //     value:2
-    // };
-    //
-    // self.$watch('course.price',function(val,old){
-    //     self.course.price = parseInt(val);
-    // });
-    //
-    // $scope.$watch('course.duration',function(val,old){
-    //     $scope.course.duration = parseInt(val);
-    // });
-
+    self.categories=[];
     self.courses=[];
     self.course={ id:0, price: '', duration: '', title: '', syllabus:{}, startDate: null, category:{}, premium: false, localUser:{}};
     self.message ='';
 
+    fetchAllCategories();
+
+    function fetchAllCategories() {
+        CategoryService.fetchAllCategories()
+            .then(
+                function (d) {
+                    self.categories = d;
+                    console.log(self.categories);
+                },
+                function (errorResponse) {
+
+                    console.error(errorResponse);
+                })
+    }
 
     fetchAllCourses();
 
@@ -45,46 +46,5 @@ app.controller('CourseController', ['CourseService','$scope', function(CourseSer
     }
 }]);
 
-app.directive('numbersOnly', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, element, attr, ngModelCtrl) {
-            function fromUser(text) {
-                if (text) {
-                    var transformedInput = text.replace(/[^0-9]/g, '');
-
-                    if (transformedInput !== text) {
-                        ngModelCtrl.$setViewValue(transformedInput);
-                        ngModelCtrl.$render();
-                    }
-                    return transformedInput;
-                }
-                return undefined;
-            }
-            ngModelCtrl.$parsers.push(fromUser);
-        }
-    };
-});
-
-app.directive('onlyNumbers', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, element, attr, ngModelCtrl) {
-            function fromUser(text) {
-                if (text) {
-                    var transformedInput = text.replace(/[^0-9]/g, '');
-
-                    if (transformedInput !== text) {
-                        ngModelCtrl.$setViewValue(transformedInput);
-                        ngModelCtrl.$render();
-                    }
-                    return transformedInput;
-                }
-                return undefined;
-            }
-            ngModelCtrl.$parsers.push(fromUser);
-        }
-    };
-});
 
 'use strict';
