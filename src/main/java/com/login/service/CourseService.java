@@ -1,6 +1,7 @@
 package com.login.service;
 
 import com.login.model.Course;
+import com.login.model.Syllabus;
 import com.login.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import java.util.List;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private SyllabusService syllabusService;
 
     public List<Course> fetchAllCourses(){
         return courseRepository.findAll();
@@ -35,7 +39,10 @@ public class CourseService {
         currentCourse.setLocalUser(course.getLocalUser());
         return courseRepository.save(currentCourse);
     }
-    public Course saveCourse (Course course){
+    public Course saveCourse (Course course)
+    {
+        Syllabus syllabus = syllabusService.saveSyllabus(course.getSyllabus());
+        course.setSyllabus(syllabus);
         return courseRepository.save(course);
     }
     public void deleteCourse(Long id){

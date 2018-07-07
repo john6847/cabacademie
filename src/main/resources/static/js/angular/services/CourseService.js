@@ -13,8 +13,42 @@ angular.module('cabAcademie').factory('CourseService',['$http', '$q', function($
             );
             return deferred.promise;
         },
-        fetchAllItem: function(){}, 
-        fetchSpecificItem: function(){}
 
-    }
+        CreateCourse: function createCourse(course) {
+                var deferred = $q.defer();
+                $http.post("/api/course/", course)
+                    .then(
+                        function (response) {
+                            deferred.resolve(response.data)
+                        }, function (errResponse) {
+                            console.error(errResponse);
+                            deferred.reject(errResponse);
+                        });
+                return deferred.promise;
+            },
+
+            updateCourse: function updateCourse(course, id) {
+                var deferred = $q.defer();
+                $http.put("/api/course/" + id, course).then(
+                    function (response) {
+                        deferred.resolve(response.data)
+                    }, function (errResponse) {
+                        console.error(errResponse);
+                        deferred.reject(errResponse);
+                    });
+                return deferred.promise;
+            },
+
+            deleteCourse: function deleteCourse(id) {
+                var deferred = $q.defer();
+                $http.delete("/api/course/" + id)
+                    .then(function (response) {
+                        deferred.resolve(response.data)
+                    }, function (errResponse) {
+                        console.error(errResponse);
+                        deferred.reject(errResponse);
+                    });
+                return deferred.promise;
+            }
+        }
 }]);

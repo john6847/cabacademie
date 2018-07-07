@@ -3,7 +3,7 @@ app.controller('CourseController', ['CourseService','CategoryService','$scope', 
 
     self.categories=[];
     self.courses=[];
-    self.course={ id:0, price: '', duration: '', title: '', syllabus:{}, startDate: null, category:{}, premium: false, localUser:{}};
+    self.course={ id:0, price: '', duration: '', title: '', syllabus:{}, startDate: null, category:{}, premium: false};
     self.message ='';
 
     fetchAllCategories();
@@ -35,15 +35,54 @@ app.controller('CourseController', ['CourseService','CategoryService','$scope', 
                 })
     }
 
-    self.register = function() {
-        //$scope.course.duration= $scope.duration.value;
-       // $scope.course.price = $scope.price.value;
-        console.log(self.course);
+    //creating a new Course
+    function createCourse(course) {
+        CourseService.CreateCourse(course)
+            .then(
+                fetchAllCourses(),
+                function (err) {
+                    self.message ='Le cours n\'a pas put etre cree';
+                    console.error(err);
+                }
+            )
     }
 
-    self.ver = function(){
-        console.log(self.course.price)
+    //updating a course
+    function updateCourse(course, id) {
+        CourseService.updateCourse(course,id).then(
+            fetchAllCourses(),
+            function (errResponse) {
+                self.message='La categorie n\'a pas put etre modifie';
+                console.error(errResponse);
+            }
+        )
     }
+
+    //deleting a course
+    function deleteCourse(id) {
+        CourseService.deleteCourse(id)
+            .then  (
+                fetchAllCourses(),
+                function (errResponse) {
+                    self.message='La course n\'a pas put etre elimine';
+                    console.error(errResponse)
+                }
+            )
+    }
+
+    //adding new course
+    self.register= function () {
+        createCourse(self.course);
+        console.log(self.course)
+        self.reset();
+    };
+
+    //resetting category form
+    self.reset= function () {
+        self.course = {};
+        $scope.courseForm.$setPristine();
+    };
+
 }]);
 
 

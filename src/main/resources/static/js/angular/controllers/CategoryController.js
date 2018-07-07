@@ -29,7 +29,7 @@ app.controller('CategoryController', ['CategoryService','$scope', function(Categ
             .then(
                 fetchAllCategories(),
                 function (err) {
-                    self.message ='La categories n\'a pas put etre cree';
+                    self.message ='La categorie n\'a pas put etre cree';
                     console.error(err);
                 }
             )
