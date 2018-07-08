@@ -124,7 +124,7 @@
 
     </style>
     <div class="container">
-        <form action="/action_page.php">
+        <form name="loginForm">
             <div class="row">
                 <h2 style="text-align:center">Bienvenue Sur CabAcademie</h2>
 
@@ -149,9 +149,9 @@
                         <p>Ou se connecter manuellement:</p>
                     </div>
 
-                    <input type="text" name="username" placeholder="utilisateur" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Login">
+                    <input type="text" id="username" name="username" ng-model="l_ctrl.credentials.username" placeholder="utilisateur" required>
+                    <input type="password"id="password" name="password" ng-model="l_ctrl.credentials.password" placeholder="mot de passe" required>
+                    <input type="submit" ng-click="l_ctrl.login()" value="Login">
                 </div>
 
             </div>
@@ -189,14 +189,14 @@
                             <label for="email">Email address</label>
                             <div class="input-group pb-modalreglog-input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                <input type="email" email="true" ng-model="credentials.userName" class="form-control" id="inputEmail" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <div class="input-group pb-modalreglog-input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                <input type="password" class="form-control" id="inputPws" placeholder="Password">
+                                <input type="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Nom d'utilisateur">
                             </div>
                         </div>
 
@@ -210,7 +210,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="checkbox" id="ch" name="chs"> I agree with <a href="#">terms and conditions.</a>
+                            <input type="checkbox" name="credentials.conditions" id="conditions" name="conditions"> I agree with <a href="#">terms and conditions.</a>
                         </div>
                     </form>
                 </div>

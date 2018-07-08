@@ -1,7 +1,10 @@
 //'use strict'
-var app = angular.module('cabAcademie', ['ngRoute', 'ngMaterial','ngMessages']);
+var app = angular.module('cabAcademie', ['ngRoute', 'ngCookies', 'ngResource', 'ngMaterial','ngMessages']);
 
-app.config(['$routeProvider', function($routeProvider){
+app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
+    $httpProvider.defaults.withCredentials= true;
+    $httpProvider.defaults.xsrfCookieName ='CSRF_TOKEN';
+    $httpProvider.defaults.xsrfHeaderName= 'X-CSRF-TOKEN';
 
     $routeProvider
         .when('/login',{

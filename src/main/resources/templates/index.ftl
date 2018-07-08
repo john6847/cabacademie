@@ -12,6 +12,9 @@
 			[ng\:cloak], [ng-cloak], .ng-cloak {
 				display: none !important;
 			}
+            .btn-cta: hover{
+                cursor: pointer;
+            }
 		</style>
 
 		<!-- Facebook and Twitter integration -->
@@ -24,8 +27,9 @@
 		<meta name="twitter:image" content="" />
 		<meta name="twitter:url" content="" />
 		<meta name="twitter:card" content="" />
-		<link rel="icon" type="image/png" href="images/favicon.co"/>
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"/>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"/>
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet"/>
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -70,6 +74,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
         <script src="js/angular-aria.js"></script>
         <script src="js/angular-messages.js"></script>
+
     </head>
     <!-- header goes here -->
     <!--<div ng-include="'particourse.ftlhtml'"></div>-->
@@ -134,8 +139,8 @@
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li class="btn-cta"><a ui-sref="login"><span>Conexion</span></a></li>
-                                <li class="btn-cta"><a href="#/createCourse"><span>Create a Course</span></a></li>
+                                <li class="btn-cta"style=""><a href="#/login"><span>Conexion</span></a></li>
+                                <li class="btn-cta"><a href="#/registerCourse"><span>Creer un course</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -218,8 +223,11 @@
 
     <script src="js/angular/services/CourseService.js"></script>
     <script src="js/angular/services/CategoryService.js"></script>
+    <script src="js/angular/services/cookies-service.js"></script>
+    <script src="js/angular/services/login-services.js"></script>
     <script src="js/angular/controllers/LoginController.js"></script>
     <script src="js/angular/controllers/HomeController.js"></script>
+    <script src="js/angular/controllers/login-controller.js"></script>
     <script src="js/angular/controllers/CourseController.js"></script>
     <script src="js/angular/controllers/CategoryController.js"></script>
     <script src="js/angular-animate.js"></script>
