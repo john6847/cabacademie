@@ -3,115 +3,119 @@
  */
 'use strict';
 
-angular.module('cabAcademie').controller('LoginController', function ($cookies, $http, $location, $q, $resource, $scope, Cookies, Csrf, Login) {
-    var self = this;
-    self.greetings = {
-        open: {
-            getResult: '',
-            postValue: 'some value'
-        },
-        secure: {
-            getResult: '',
-            postValue: 'some secure value'
-        }
-    };
+app.factory('Login', function ($http, $resource,  $rootScope, Cookies) {
 
-    self.credentials = {
-        username: '',
-        password: ''
-    };
-
-    var openResources = $resource('http://localhost:3000/rest/open', {}, {
-        get: {method: 'GET', cache: false, isArray: false},
-        post: {method: 'POST', isArray: false}
+    var loginResources = $resource('http://localhost:3000/login', {}, {
+        options: {method: 'OPTIONS', cache: false}
     });
 
-    self.getOpenGreetings = function() {
-        self.greetings.open.getResult = '';
+    var logoutResources = $resource('http://localhost:3000/logout', {}, {
+        options: {method: 'OPTIONS', cache: false}
+    });
 
-        openResources.get().$promise.then(function (response) {
-            console.log('GET /rest/open returned: ', response);
-            self.greetings.open.getResult = response.greetings;
-        });
+    /**
+     * Tries to detect whether the response elements returned indicate an invalid or missing CSRF token...
+     */
+    var isCSRFTokenInvalidOrMissing = function (data, status) {
+        return (status === 403 && data.message && data.message.toLowerCase().indexOf('csrf') > -1)
+            || (status === 0 && data === null);
     };
 
-    self.postOpenGreetings = function() {
-        openResources.post({greetings: self.greetings.open.postValue}).$promise.then(function(response) {
-            console.log('POST /rest/open returned: ', response);
-            console.info('You might want to check the server logs to see that the POST has been handled!');
-        });
-    };
+    return {
+        /**
+         * Service function that logs in the user with the specified username and password.
+         * To handle the returned promise we use a successHandler/errorHandler approach because we want to have
+         * access to the additional information received when the failure handler is invoked (status, etc.).
+         */
+        login: function(username, password, successHandler, errorHandler) {
 
-    self.login = function () {
-        Login.login(self.credentials.username, self.credentials.password, function (data, status, headers, config) {
-            // Success handler
-            console.info('The user has been successfully logged in! ', data, status, headers, config);
+            // Obtain a CSRF token
+            loginResources.options().$promise.then(function (response) {
+                console.log('Obtained a CSRF token in a cookie', response);
 
-        }, function(data, status, headers, config) {
-            // Failure handler
-            console.error('Something went wrong while trying to login... ', data, status, headers, config);
-        });
-    };
+                // Extract the CSRF token
+                var csrfToken = Cookies.getFromDocument($http.defaults.xsrfCookieName);
+                console.log('Extracted the CSRF token from the cookie', csrfToken);
 
-    self.logout = function() {
-        Login.logout(function (data, status, headers, config) {
-            // Success handler
-            self.credentials = {username: '', password: ''};
-            delete $cookies['JSESSIONID'];
-            console.info('The user has been logged out!');
+                // Prepare the headers
+                var headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                };
+                headers[$http.defaults.xsrfHeaderName] = csrfToken;
 
-            $location.url('/');
+                // Post the credentials for logging in
+                $http.post('http://localhost:3000/login', 'username=' + username + '&password=' + password, {
+                    headers: headers
+                })
+                    .success(successHandler)
 
-        }, function(data, status, headers, config) {
-            // Failure handler
-            console.error('Something went wrong while trying to logout... ', data, status, headers, config);
-        });
-    };
+                    .error(function (data, status, headers, config) {
 
-    var secureResources = function (headers) {
-        if (headers !== undefined) {
-            return $resource('http://localhost:3000/rest/secure', {}, {
-                post: {method: 'POST', headers: headers, isArray: false}
-            });
-        } else {
-            return $resource('http://localhost:3000/rest/secure', {}, {
-                get: {method: 'GET', cache: false, isArray: false},
-                options: {method: 'OPTIONS', cache: false}
-            });
-        }
-    };
+                        if (isCSRFTokenInvalidOrMissing(data, status)) {
+                            console.error('The obtained CSRF token was either missing or invalid. Have you turned on your cookies?');
 
-    self.getSecureGreetings = function() {
-        self.greetings.secure.getResult = '';
-
-        secureResources().get().$promise.then(function (response) {
-            console.log('GET /rest/secure returned: ', response);
-            self.greetings.secure.getResult = response.greetings;
-
-        }).catch(function(response) {
-            handleError(response);
-        });
-    };
-
-    self.postSecureGreetings = function () {
-        Csrf.addResourcesCsrfToHeaders(secureResources().options, $http.defaults.headers.post).then(function (headers) {
-            secureResources(headers).post({greetings: self.greetings.secure.postValue}).$promise.then(function (response) {
-                console.log('POST /rest/secure returned: ', response);
-                console.info('You might want to check the server logs to see that the POST has been handled!');
+                        } else {
+                            // Nope, the error is due to something else. Run the error handler...
+                            errorHandler(data, status, headers, config);
+                        }
+                    });
 
             }).catch(function(response) {
-                handleError(response);
+                console.error('Could not contact the server... is it online? Are we?', response);
             });
-        });
-    };
+        },
 
-    var handleError = function(response) {
+        logout: function(successHandler, errorHandler) {
 
-        if (response.status === 401) {
-            console.error('You need to login first!');
+            // Obtain a CSRF token
+            logoutResources.options().$promise.then(function (response) {
+                console.log('Obtained a CSRF token in a cookie', response);
 
-        } else {
-            console.error('Something went wrong...', response);
-        }
+                // Extract the CSRF token
+                var csrfToken = Cookies.getFromDocument($http.defaults.xsrfCookieName);
+                console.log('Extracted the CSRF token from the cookie', csrfToken);
+
+                // Prepare the headers
+                var headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                };
+                headers[$http.defaults.xsrfHeaderName] = csrfToken;
+
+                // Post the credentials for logging out
+                $http.post('http://localhost:3000/logout', '', {
+                    headers: headers
+                })
+                    .success(successHandler)
+                    .error(function(data, status, headers, config) {
+
+                        if (isCSRFTokenInvalidOrMissing(data, status)) {
+                            console.error('The obtained CSRF token was either missing or invalid. Have you turned on your cookies?');
+
+                        } else {
+                            // Nope, the error is due to something else. Run the error handler...
+                            errorHandler(data, status, headers, config);
+                        }
+                    });
+
+            }).catch(function(response) {
+                console.error('Could not contact the server... is it online? Are we?', response);
+            });
+        },getUsers: function (callback) {
+
+              $http.get('/api/login/user')
+                    .then(function (data) {
+                        if (data.name) {
+                            $rootScope.authenticated = true;
+                        } else {
+                            $rootScope.authenticated = false;
+                        }
+                        callback && callback();
+                    }, function (error) {
+                        $rootScope.authenticated = false;
+                        console.log(error);
+                        callback && callback()
+                    });
+                }
+
     };
 });

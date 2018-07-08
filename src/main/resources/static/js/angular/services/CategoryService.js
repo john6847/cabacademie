@@ -1,5 +1,5 @@
 'use strict'; 
-angular.module('cabAcademie').factory('CategoryService',['$http', '$q', function($http, $q){
+app.factory('CategoryService',['$http', '$q', function($http, $q){
     return {
         fetchAllCategories: function () { // fetching all Categories from backend
             var deferred = $q.defer();

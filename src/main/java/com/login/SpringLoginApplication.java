@@ -1,9 +1,11 @@
 package com.login;
 
 import com.login.config.ApplicationSecurity;
+import com.login.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,9 @@ public class SpringLoginApplication {
 	}
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SpringLoginApplication.class, args);
+		ApplicationContext appContext= SpringApplication.run(SpringLoginApplication.class, args);
+
+		UserService userService = (UserService)appContext.getBean("userService");
+		userService.crearAdmin();
 	}
 }

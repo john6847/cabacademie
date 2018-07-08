@@ -74,6 +74,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
         <script src="js/angular-aria.js"></script>
         <script src="js/angular-messages.js"></script>
+        <script src="js/angular-cookies.js"></script>
+        <script src="js/angular-resource.js"></script>
 
     </head>
     <!-- header goes here -->
@@ -224,10 +226,10 @@
     <script src="js/angular/services/CourseService.js"></script>
     <script src="js/angular/services/CategoryService.js"></script>
     <script src="js/angular/services/cookies-service.js"></script>
-    <script src="js/angular/services/login-services.js"></script>
+    <script src="js/angular/services/login-service.js"></script>
     <script src="js/angular/controllers/LoginController.js"></script>
     <script src="js/angular/controllers/HomeController.js"></script>
-    <script src="js/angular/controllers/login-controller.js"></script>
+    <script src="js/angular/controllers/LoginController.js"></script>
     <script src="js/angular/controllers/CourseController.js"></script>
     <script src="js/angular/controllers/CategoryController.js"></script>
     <script src="js/angular-animate.js"></script>

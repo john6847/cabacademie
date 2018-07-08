@@ -20,7 +20,7 @@ public class LocalUser implements Serializable{
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String userName;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String email;

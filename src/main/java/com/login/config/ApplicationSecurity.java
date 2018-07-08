@@ -79,7 +79,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth)throws Exception{
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("select u.username, u.password, u.enabled from local_user u where u.username=?")
-                .authoritiesByUsernameQuery("select r.username, r.role from role r where r.username=?")
+                .authoritiesByUsernameQuery("SELECT c.role.role FROM LocalUser AS c WHERE c.username =?")
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder());
     }
@@ -88,13 +88,16 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
-                .antMatchers("/login", "/rest/open/**").permitAll()
+                .antMatchers("/login.ftl", "/rest/open/**").permitAll()
                 .antMatchers("/logout", "/rest/**").authenticated()
                 .and().csrf().disable();
 
         // Handlers and entry points
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
-        http.formLogin().successHandler(authenticationSuccessHandler);
+        http.formLogin()
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(authenticationSuccessHandler);
         http.formLogin().failureHandler(authenticationFailureHandler);
 
         // Logout

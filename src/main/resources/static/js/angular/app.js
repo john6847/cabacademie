@@ -3,8 +3,8 @@ var app = angular.module('cabAcademie', ['ngRoute', 'ngCookies', 'ngResource', '
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
     $httpProvider.defaults.withCredentials= true;
-    $httpProvider.defaults.xsrfCookieName ='CSRF_TOKEN';
-    $httpProvider.defaults.xsrfHeaderName= 'X-CSRF-TOKEN';
+    // $httpProvider.defaults.xsrfCookieName ='CSRF_TOKEN';
+    // $httpProvider.defaults.xsrfHeaderName= 'X-CSRF-TOKEN';
 
     $routeProvider
         .when('/login',{

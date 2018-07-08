@@ -54,7 +54,7 @@ public class MainController {
 	public String registerCourse() {
 		return "partials/register_course";
 	}
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/login" },method = { RequestMethod.GET})
 	public String login() {
 		return "partials/login";
 	}

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('cabAcademie').factory('Cookies', function () {
+app.factory('Cookies', function () {
 
     return {
         /**
