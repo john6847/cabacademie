@@ -41,7 +41,7 @@ public class MainController {
 	public String index() {
 		return "index";
 	}
-@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String homePage() {
 		return "partials/home";
 	}
@@ -58,9 +58,14 @@ public class MainController {
 	public String login() {
 		return "partials/login";
 	}
-@RequestMapping(value = { "/category" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/category" }, method = RequestMethod.GET)
 	public String category() {
 		return "partials/category";
+	}
+
+	@RequestMapping(value = { "/login/user" },method = { RequestMethod.POST})
+	public String loginUser() {
+		return "Hola";
 	}
 
 

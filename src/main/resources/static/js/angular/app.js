@@ -113,6 +113,20 @@ app.config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 }]);
 
+app.run(function ($localStorage, $http, $location, $rootScope) {
+    if ($localStorage.user) {
+        $http.defaults.headers.common['x-auth-token'] = $localStorage.authToken;
+    }
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        if ($location.path() !== "/login" && !$localStorage.user) {
+            $location.path('/login');
+        } else if ($location.path() === "/login" && $localStorage.user) {
+            $location.path('/');
+        }
+    });
+});
+
 app.directive('numbersOnly', function () {
     return {
         require: 'ngModel',
